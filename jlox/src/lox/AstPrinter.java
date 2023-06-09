@@ -6,6 +6,11 @@ class AstPrinter implements Expr.Visitor<String> {
     }
 
     @Override
+    public String visitAssignExpr(Expr.Assign expr) {
+        return parenthesize("define", expr, expr.value);
+    }
+
+    @Override
     public String visitVariableExpr(Expr.Variable expr) {
         return expr.name.toString();
     }
